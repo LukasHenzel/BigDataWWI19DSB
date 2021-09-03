@@ -1,0 +1,4 @@
+essential_generators
+kafka-python
+requests
+pandas

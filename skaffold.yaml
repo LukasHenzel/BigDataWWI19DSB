@@ -1,0 +1,46 @@
+apiVersion: skaffold/v2beta21
+kind: Config
+metadata:
+  name: skaffold-stable
+build:
+  artifacts:
+  - image: docker-image-postgres
+    context: Docker_Image_Postgres
+    docker:
+      dockerfile: Dockerfile
+  - image: flaskapp
+    context: webapp
+    docker:
+      dockerfile: Dockerfile
+  - image: spark-app
+    context: spark-app
+    docker:
+      dockerfile: Dockerfile
+  - image: python-kafka-publisher
+    context: python-publisher
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+     - nginx-service.yaml
+     - webapp/flask_app_deployment.yaml
+     - Docker_Image_Postgres/deployment.yaml
+     - nginx.yaml
+     - webapp/flask-app-service.yaml
+     - python-publisher/k8s/app.yaml
+     - kafka-my-cluster.yml
+     - spark.yaml
+  helm:
+    releases:
+    - name: kafka-chart
+      chartPath: ./strimzi-helm/
+# Mögliches Hadoop deployment
+   # - name: hadoop
+    #  chartPath: ./hdfs-helm/
+     # namespace: default
+      #setValues:
+       # hdfs.dataNode:repilcas: 1
+        #yarn.nodeManager.replicas: 1
+        #hdfs.webhdfs.enabled: true
+        

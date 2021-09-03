@@ -1,0 +1,42 @@
+# Beschreibung des Postgres-Services
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  ports:
+    - protocol: TCP
+    # auf diesem Port ist der Service ansprechbar
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: postgres
+  
+---
+# Beschreibung des Postgres-Deployments
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  #Anzahl der Pods die unter dem Service laufen sollen
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: docker-image-postgres
+        ports:
+        - containerPort: 5432
+        #Auf diesem Port ist der Container vom Service ansprechbar
+

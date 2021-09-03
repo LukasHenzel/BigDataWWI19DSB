@@ -1,0 +1,19 @@
+<html>
+
+    <header>
+        <center>
+            <h1>Corona Dashbaord</h1>
+        </center>
+    </header>
+
+    <body>
+        {% for item in data %}
+            <tr>
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
+                <td>{{item[2]}}</td>
+            </tr>
+        {% endfor %}
+    </body>
+
+</html>

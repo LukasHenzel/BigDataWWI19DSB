@@ -1,0 +1,21 @@
+# Deployment der Spark App
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-app
+spec:
+  selector:
+    matchLabels:
+      app: spark-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spark-app
+    spec:
+      containers:
+      - name: spark-app
+        image: spark-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
