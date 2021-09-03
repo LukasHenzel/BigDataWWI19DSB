@@ -63,3 +63,7 @@ Um eine Übersicht über die Pods zu haben:
 while ($true) {Clear-Host; kubectl get all; sleep 10}
 
 Hierbei werden auch alle Namespaces ausgegeben und es kann eingesehen werden über welche Port die einzelnen Teile kommunizieren.
+
+
+Link zum Screencast:
+https://youtu.be/osT8S9EdV-U
