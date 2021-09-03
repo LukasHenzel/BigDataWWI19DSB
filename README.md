@@ -49,7 +49,8 @@ Start des Use Cases
 - Starten von Minikube
 - Starten von Minikube mit Standardwerten: minikube start
 - Docker Desktop starten, damit der Docker Daemon verwendet werden kann
-Starten von Minikube mit mehr Ressourcen: minikube start --memory 8192 --cpus 4 
+
+-Starten von Minikube mit mehr Ressourcen: minikube start --memory 8192 --cpus 4 
 
 Nun muss nur noch Skaffold gestartet werden:
 skaffold dev --port-forward
